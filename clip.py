@@ -4,9 +4,7 @@ oldClip = pyperclip.paste()
 
 while True:
 
-	if oldClip != pyperclip.paste():
-
-		print(oldClip)
-
+	if oldClip != pyperclip.paste() and pyperclip.paste() != "":
+		
 		oldClip = pyperclip.paste()
-		pyperclip.copy(oldClip.replace('\n','').replace('\r',''))
+		pyperclip.copy(oldClip.replace('\n',' ').replace('\r',' '))
