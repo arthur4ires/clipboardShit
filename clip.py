@@ -2,7 +2,8 @@ import pyperclip
 import re 
 
 oldClip = pyperclip.paste()
-regexUrl = r"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+regexUrl = r"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*(png|jpg))"
+urlParsed = ''
 
 while True:
 	
@@ -21,8 +22,11 @@ while True:
 				urlParsed = a[1].group() 
 
 			if urlParsed != newClip.replace(' ',''):
+			
 				pyperclip.copy(newClip)
+			
 			else:
+			
 				pyperclip.copy('![image]({})'.format(newClip))
 
 
