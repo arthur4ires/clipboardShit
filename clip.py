@@ -18,13 +18,17 @@ def main():
     
     while True:
         try:
+            
+            if 'blob:' in pyperclip.paste() and pyperclip.paste() != "":
+                
+                notifyUser(pyperclip.paste())
+                
+                continue
+            
             if oldClip != pyperclip.paste() and pyperclip.paste() != "":
+                
                 oldClip = pyperclip.paste()
                 newClip = oldClip.replace('\n',' ').replace('\r',' ').replace('⫹','').replace('- ','').replace('⫺','-')
-                
-                if 'blob:' in newClip:
-                    notifyUser(newClip)
-                    continue
                 
                 matches = re.finditer(regexUrl, newClip, re.MULTILINE)
                 
